@@ -13,11 +13,10 @@ from sklearn import preprocessing
 import matplotlib.pyplot as plt
 from nilearn import plotting
 
-max_iter = 100
+max_iter = 50
 tol = 1e-4
 dual_max_iter = 600
 dual_tol = 1e-5
-max_abs_scaler = preprocessing.MaxAbsScaler()
 train = scipy.io.loadmat('data/simulation_data.mat')['Simulation_data_p']
 train1 = fn2.standardize(train)
 data_1 = train1.T
@@ -31,6 +30,7 @@ print ("Overlapping Blocks: ", blocks)
 Theta = -Theta
 Theta = Theta - np.diag(np.diag(Theta))
 Theta = Theta.reshape(((node_num*node_num),1))
+max_abs_scaler = preprocessing.MaxAbsScaler()
 Theta = max_abs_scaler.fit_transform(Theta)
 Theta = Theta.reshape((node_num,node_num))      
 Theta[Theta!=0] = 1
