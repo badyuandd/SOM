@@ -13,7 +13,7 @@ from sklearn import preprocessing
 import matplotlib.pyplot as plt
 from nilearn import plotting
 
-max_iter = 99
+max_iter = 100
 tol = 1e-4
 dual_max_iter = 600
 dual_tol = 1e-5
